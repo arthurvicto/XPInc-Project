@@ -1,6 +1,8 @@
 const express = require("express");
 const assets = require("./controllers/assets");
 const newUser = require("./controllers/signUp");
+const allClients = require("./controllers/clients");
+
 const bodyParser = require("body-parser");
 const app = express();
 
@@ -14,5 +16,6 @@ app.get("/", (req, res) => {
 app.get("/ativos", assets.allAssetsFromServices);
 app.get("/ativos/:id", assets.assetsById);
 app.post("/signup", newUser.createUser);
+app.get("/clients", allClients.allClients);
 
 module.exports = app;
