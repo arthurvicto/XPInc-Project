@@ -12,24 +12,24 @@ CREATE TABLE XPInc.clients(
 
 ) ENGINE = INNODB;
 
-CREATE TABLE XPInc.wallet(
-  idW INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE XPInc.wallets(
+  idWallet INT NOT NULL AUTO_INCREMENT,
   idClient INT NOT NULL,
   balance DECIMAL(65,2) NOT NULL DEFAULT(0.00),
 
-  CONSTRAINT PRIMARY KEY(idW),
+  CONSTRAINT PRIMARY KEY(idWallet),
   FOREIGN KEY(idClient) REFERENCES clients(idClient)
 
 ) ENGINE = INNODB;
 
 CREATE TABLE XPInc.deposit_withdraw(
   idDW INT NOT NULL AUTO_INCREMENT,
-  idW INT NOT NULL,
+  idWallet INT NOT NULL,
   operation VARCHAR(50) NOT NULL,
   value DECIMAL(65,2) NOT NULL,
 
   CONSTRAINT PRIMARY KEY(idDW),
-  FOREIGN KEY(idW) REFERENCES wallet(idW)
+  FOREIGN KEY(idWallet) REFERENCES wallets(idWallet)
 
 ) ENGINE = INNODB;
 
@@ -45,30 +45,29 @@ CREATE TABLE XPInc.assets(
 
 CREATE TABLE XPInc.client_assets(
   idCA INT NOT NULL AUTO_INCREMENT,
-  idClient INT NOT NULL,
-  idAsset INT NOT NULL,
-  qtde INT NOT NULL,
+  idWallet INT NOT NULL,
+  idAsset INT NOT NULL DEFAULT(0),
+  qtde INT NOT NULL  DEFAULT(0),
 
   CONSTRAINT PRIMARY KEY(idCA),
-  FOREIGN KEY(idClient) REFERENCES clients(idClient),
+  FOREIGN KEY(idWallet) REFERENCES wallets(idWallet),
   FOREIGN KEY(idAsset) REFERENCES assets(idAsset)
 
 ) ENGINE = INNODB;
 
 CREATE TABLE XPInc.bought_sold(
   idBS INT NOT NULL AUTO_INCREMENT,
-  idClient INT NOT NULL,
+  idWallet INT NOT NULL,
   idAssets INT NOT NULL,
   quantidade INT NOT NULL,
-  velue DECIMAL(65,2) NOT NULL,
+  velue DECIMAL(65,2) NOT NULL DEFAULT(0),
 
   CONSTRAINT PRIMARY KEY(idBS),
-  FOREIGN KEY(idClient) REFERENCES clients(idClient),
+  FOREIGN KEY(idWallet) REFERENCES wallets(idWallet),
   FOREIGN KEY(idAssets) REFERENCES assets(idAsset)
 
 ) ENGINE = INNODB;
 
- 
 INSERT INTO XPInc.assets (name, qtde, value) VALUES
 ("AZUL4", 10000, 350),
 ("PETR4", 10000, 350),
