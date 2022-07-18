@@ -1,12 +1,13 @@
 const connection = require("./connections");
 
-const allClients = async () => {
+const balance = async (idWallet) => {
   const [result] = await connection.execute(
-    `SELECT idClient, name, email FROM XPInc.clients`
+    `SELECT * FROM XPInc.wallets
+WHERE IdWallet = ?` , [idWallet]
   );
   return result;
 };
 
 module.exports = {
-  allClients,
+  balance,
 };
