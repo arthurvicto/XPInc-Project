@@ -5,7 +5,7 @@ const createWallet = async (clientId) => {
     `INSERT INTO XPInc.wallets (idClient) VALUES (?)`,
     [clientId]
   );
-  return result;
+  return result.insertId;
 };
 
 module.exports = {

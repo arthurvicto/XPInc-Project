@@ -2,6 +2,7 @@ const express = require("express");
 const assets = require("./controllers/assets");
 const newUser = require("./controllers/signUp");
 const allClients = require("./controllers/clients");
+const newWallet = require("./controllers/createWallet");
 
 const bodyParser = require("body-parser");
 const app = express();
@@ -17,5 +18,6 @@ app.get("/ativos", assets.allAssetsFromServices);
 app.get("/ativos/:id", assets.assetsById);
 app.post("/signup", newUser.createUser);
 app.get("/clients", allClients.allClients);
+app.post("/createwallet/:id", newWallet.newWallet);
 
 module.exports = app;
