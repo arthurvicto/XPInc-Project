@@ -68,12 +68,7 @@ CREATE TABLE XPInc.bought_sold(
 
 ) ENGINE = INNODB;
 
-INSERT INTO XPInc.clients (name, email, password) VALUES
-    ("arthur", "arthur@gmail.com", 123),
-    ("Lázo ", "lazaro@gmail.com", 123),
-    ("Fábio", "fabio@gmail.com", 123),
-    ("João", "joão@gmail.com", 123);
-    
+ 
 INSERT INTO XPInc.assets (name, qtde, value) VALUES
 ("AZUL4", 10000, 350),
 ("PETR4", 10000, 350),
