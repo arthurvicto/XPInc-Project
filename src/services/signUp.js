@@ -1,4 +1,4 @@
-const newUser = require("../models/singUp");
+const newUser = require("../models/signUp");
 
 const createUser = async (name, email, password) => {
   const client = await newUser.createClient(name, email, password);

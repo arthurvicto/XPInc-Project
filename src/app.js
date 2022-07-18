@@ -1,6 +1,6 @@
 const express = require("express");
 const assets = require("./controllers/assets");
-const newUser = require("./controllers/singUp");
+const newUser = require("./controllers/signUp");
 const bodyParser = require("body-parser");
 const app = express();
 

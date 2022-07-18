@@ -1,4 +1,4 @@
-const newUser = require("../services/singUp");
+const newUser = require("../services/signUp");
 
 const createUser = async (req, res) => {
     const { name, email, password } = req.body;
