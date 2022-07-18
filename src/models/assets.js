@@ -7,7 +7,7 @@ const getAllAssets = async () => {
 
 const getAssetById = async (id) => {
     const [result] = await connection.execute(`SELECT * FROM XPInc.assets WHERE idAsset = ?`, [id]);
-    return result;
+    return result[0];
 };
 
 module.exports = {
