@@ -4,6 +4,6 @@ const qtyValidator = require("../middlewares/assetsQuantityValidator");
 const balanceForAssetsValidator = require("../middlewares/balanceForAssetsValidator");
 const router = express.Router();
 
-router.post("/comprar", qtyValidator, balanceForAssetsValidator, buyAssets.buyAssets);   
+router.post("/comprar",  qtyValidator,  balanceForAssetsValidator, buyAssets.buyAssets);   
 
 module.exports = router;

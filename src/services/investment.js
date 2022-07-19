@@ -1,24 +1,27 @@
 const clientInvestment = require("../models/investment");
-const assetsById = require("../models/assets");
+const paymentWithWallet = require("../models/wallet");
+const decreaseAssets = require("../models/assets");
+const walletAssets = require("../models/clientAssets");
+const checkAssets = require("../utils/clientAssets");
+const checkAssetsPrice = require("../utils/assetsPriceOnRequest");
 
-const buyAssets = async (idClient, idAsset, qtdeAsset, value) => {
-  const quantityValidator = await assetsById.getAssetById(idAsset);
-  const assetsPrice = qtdeAsset * +quantityValidator.value;
-  const result = await clientInvestment.assetsHistory(
-    idClient,
-    (operation = "bought"),
-    idAsset,
-    (qtde = qtdeAsset),
-    (value = assetsPrice)
-  );
+const buyAssets = async (idWallet, idAsset, qtde) => {
+  const price = await checkAssetsPrice.checkAssetsPrice(idAsset, qtde);
+  await clientInvestment.assetsHistory(idWallet, (operation = "bought"), idAsset, qtde, (value = price));
+  await paymentWithWallet.withdraw(idWallet, price);
+  await decreaseAssets.decreaseAssets(idAsset, qtde);
+  const assets = await checkAssets.checkAssets(idWallet, idAsset);
+  if (assets) {
+    await walletAssets.improveAssets(idWallet, idAsset, qtde);
+  }
+  if (!assets) {
+    await walletAssets.createAsset(idWallet, idAsset, qtde);
+  }
+
   return {
     code: 200,
-    message:
-      "Investimento realizado com sucesso para o ativo " +
-      quantityValidator.name +
-      " com " + qtdeAsset + " unidades com valor de " +
-      "R$ " + assetsPrice + " reais",
-  };
+    message: `Investimento realizado com sucesso para o ativo ${idAsset} `
+    + `com ${qtde} unidades com valor de R$ ${price} reais`};
 };
 
 module.exports = {
