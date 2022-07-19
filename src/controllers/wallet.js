@@ -8,11 +8,23 @@ const clientBalance = async (req, res) => {
 
 const deposit = async (req, res) => {
   const { id, value } = req.body;
-  const balance = await wallet.deposit(id, value);
-  res.status(200).json(balance);
+  const result = await wallet.deposit(id, value);
+  res.status(200).json(result.message);
+};
+
+const withdraw = async (req, res) => {
+  const { id, value } = req.body;
+  const balance = await wallet.clientBalance(id);
+  if (balance.balance < value) {
+    return res.status(200).json("Saldo insuficiente");
+  } else {
+    const result = await wallet.withdraw(id, value);
+    res.status(200).json(result.message);
+  }
 };
 
 module.exports = {
   clientBalance,
   deposit,
+  withdraw,
 };
