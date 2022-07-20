@@ -30,6 +30,16 @@ const improveAssets = async (idWallet, idAsset, qtde) => {
   return result;
 };
 
+const decreaseAssets = async (idWallet, idAsset, qtde) => {
+  const [result] = await connection.execute(
+    `UPDATE XPInc.client_assets
+    SET qtde = qtde - ?
+    WHERE idWallet = ? AND idAsset = ?`,
+    [qtde, idWallet, idAsset],
+  );
+  return result;
+};
+
 const createAsset = async (idWallet, idAsset, qtde) => {
   const [result] = await connection.execute(
     `INSERT INTO XPInc.client_assets (idWallet, idAsset, qtde)
@@ -39,9 +49,20 @@ const createAsset = async (idWallet, idAsset, qtde) => {
   return result;
 };
 
+const deleteAsset = async (idWallet, idAsset) => {
+  const [result] = await connection.execute(
+    `DELETE FROM XPInc.client_assets
+    WHERE idWallet = ? AND idAsset = ?`,
+    [idWallet, idAsset],
+  );
+  return result;
+};
+
 module.exports = {
   clientAssets,
   improveAssets,
   createAsset,
   clientAssetsById,
+  decreaseAssets,
+  deleteAsset,
 };

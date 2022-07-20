@@ -1,15 +1,21 @@
 const express = require('express');
-const buyAssets = require('../controllers/investment');
-const qtyValidator = require('../middlewares/assetsQuantityValidator');
+const investment = require('../controllers/investment');
+const quantityOfAssetsOnBank = require('../middlewares/assetsQuantityValidator');
 const balanceForAssetsValidator = require('../middlewares/balanceForAssetsValidator');
+const quantityOfAssetsOnWallet = require('../middlewares/assetsQuantityOnWallet');
 
 const router = express.Router();
 
 router.post(
   '/comprar',
-  qtyValidator,
+  quantityOfAssetsOnBank,
   balanceForAssetsValidator,
-  buyAssets.buyAssets,
+  investment.buyAssets,
+);
+router.post(
+  '/vender',
+  quantityOfAssetsOnWallet,
+  investment.sellAssets,
 );
 
 module.exports = router;

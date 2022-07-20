@@ -23,8 +23,19 @@ const decreaseAssets = async (idAsset, qtde) => {
   return result;
 };
 
+const improveAssets = async (idAsset, qtde) => {
+  const [result] = await connection.execute(
+    `UPDATE XPInc.assets
+    SET qtde = qtde + ?
+    WHERE idAsset = ?;`,
+    [qtde, idAsset],
+  );
+  return result;
+};
+
 module.exports = {
   getAllAssets,
   getAssetById,
   decreaseAssets,
+  improveAssets,
 };

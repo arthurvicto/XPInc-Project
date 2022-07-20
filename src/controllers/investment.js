@@ -6,6 +6,13 @@ const buyAssets = async (req, res) => {
   res.status(result.code).json({ message: result.message });
 };
 
+const sellAssets = async (req, res) => {
+  const { idWallet, idAsset, qtde } = req.body;
+  const result = await clientInvestment.sellAssets(idWallet, idAsset, qtde);
+  res.status(result.code).json({ message: result.message });
+};
+
 module.exports = {
   buyAssets,
+  sellAssets,
 };
