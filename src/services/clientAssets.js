@@ -1,4 +1,4 @@
-const clientAssetsFromModels = require("../models/clientAssets");
+const clientAssetsFromModels = require('../models/clientAssets');
 
 const clientAssets = async (id) => {
   const result = await clientAssetsFromModels.clientAssets(id);

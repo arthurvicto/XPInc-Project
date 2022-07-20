@@ -1,10 +1,10 @@
-const connection = require("./connections");
+const connection = require('./connections');
 
 const assetsHistory = async (idWallet, operation, idAsset, qtde, value) => {
   const [result] = await connection.execute(
     `INSERT INTO XPInc.assets_history (idWallet, operation, idAsset, qtde, value)
     VALUES (?, ?, ?, ?, ?);`,
-    [idWallet, operation, idAsset, qtde, value]
+    [idWallet, operation, idAsset, qtde, value],
   );
   return result;
 };
@@ -14,7 +14,7 @@ const improveAssets = async (idWallet, idAsset, qtde) => {
     `UPDATE XPInc.client_assets
         SET qtde = qtde + ?
         WHERE idWallet = ? AND idAsset = ?;`,
-    [qtde, idWallet, idAsset]
+    [qtde, idWallet, idAsset],
   );
   return result;
 };
@@ -24,7 +24,7 @@ const decreaseAssets = async (idWallet, idAsset, qtde) => {
     `UPDATE XPInc.client_assets
             SET qtde = qtde - ?
             WHERE idWallet = ? AND idAsset = ?;`,
-    [qtde, idWallet, idAsset]
+    [qtde, idWallet, idAsset],
   );
   return result;
 };

@@ -1,4 +1,4 @@
-const allAssets = require("../services/assets");
+const allAssets = require('../services/assets');
 
 const allAssetsFromServices = async (req, res) => {
   const assets = await allAssets.allAssets();
