@@ -1,8 +1,14 @@
 const express = require('express');
-const allClients = require('../controllers/clients');
+const clients = require('../controllers/clients');
+const loginValidator = require('../middlewares/loginValidator');
 
 const router = express.Router();
 
-router.get('/', allClients.allClients);
+router.get('/', clients.allClients);
+router.post(
+  '/login',
+  loginValidator,
+  clients.login,
+);
 
 module.exports = router;

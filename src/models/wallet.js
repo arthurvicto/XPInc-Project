@@ -9,6 +9,15 @@ WHERE IdWallet = ?`,
   return result[0];
 };
 
+const clientWalletByIdClient = async (idClient) => {
+  const [result] = await connection.execute(
+    `SELECT * FROM XPInc.wallets
+WHERE IdClient = ?`,
+    [idClient],
+  );
+  return result;
+};
+
 const deposit = async (idWallet, value) => {
   const [result] = await connection.execute(
     `UPDATE XPInc.wallets
@@ -42,4 +51,5 @@ module.exports = {
   deposit,
   withdraw,
   history,
+  clientWalletByIdClient,
 };

@@ -1,7 +1,7 @@
 const newWalletFromModels = require('../models/createWallet');
 
-const newWallet = async (id) => {
-  const wallet = await newWalletFromModels.createWallet(id);
+const newWallet = async (idClient) => {
+  const wallet = await newWalletFromModels.createWallet(idClient);
   return { code: 200, message: 'Conta criado com sucesso!', wallet };
 };
 
