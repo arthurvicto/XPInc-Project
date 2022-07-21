@@ -4,7 +4,7 @@ const assets = require('../controllers/clientAssets');
 
 const router = express.Router();
 
-router.get('/:id', wallet.clientBalance);
+router.get('/:idWallet', wallet.clientBalance);
 router.post('/deposito', wallet.deposit);
 router.post('/saque', wallet.withdraw);
 router.get('/ativos/:id', assets.clientAssets);

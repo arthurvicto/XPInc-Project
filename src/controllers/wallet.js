@@ -1,8 +1,8 @@
 const wallet = require('../services/wallet');
 
 const clientBalance = async (req, res) => {
-  const { id } = req.params;
-  const balance = await wallet.clientBalance(id);
+  const { idWallet } = req.params;
+  const balance = await wallet.clientBalance(idWallet);
   res.status(200).json(balance);
 };
 

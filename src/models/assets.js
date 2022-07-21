@@ -5,10 +5,10 @@ const getAllAssets = async () => {
   return result;
 };
 
-const getAssetById = async (id) => {
+const getAssetById = async (idAsset) => {
   const [result] = await connection.execute(
     'SELECT * FROM XPInc.assets WHERE idAsset = ?',
-    [id],
+    [idAsset],
   );
   return result[0];
 };
