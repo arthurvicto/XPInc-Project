@@ -1,9 +1,9 @@
 const connection = require('./connections');
 
-const createWallet = async (clientId) => {
+const createWallet = async (idClient) => {
   const [result] = await connection.execute(
     'INSERT INTO XPInc.wallets (idClient) VALUES (?)',
-    [clientId],
+    [idClient],
   );
   return result.insertId;
 };

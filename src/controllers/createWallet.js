@@ -1,9 +1,9 @@
 const newWalletFromServices = require('../services/createWallet');
 
 const newWallet = async (req, res) => {
-  const { id } = req.params;
-  const wallet = await newWalletFromServices.newWallet(id);
-  res.status(wallet.code).json(wallet.message);
+  const { idClient } = req.body;
+  const wallet = await newWalletFromServices.newWallet(idClient);
+  res.status(wallet.code).json({ message: wallet.message });
 };
 
 module.exports = {
