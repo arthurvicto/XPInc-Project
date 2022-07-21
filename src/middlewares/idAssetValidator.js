@@ -19,7 +19,7 @@ module.exports = async (req, res, next) => {
     });
   }
   if (asset === null || asset === undefined) {
-    return res.status(400).json({
+    return res.status(404).json({
       message: 'Ativo não encontrado',
     });
   }
