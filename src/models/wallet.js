@@ -1,6 +1,6 @@
 const connection = require('./connections');
 
-const balance = async (idWallet) => {
+const clientWalletById = async (idWallet) => {
   const [result] = await connection.execute(
     `SELECT * FROM XPInc.wallets
 WHERE IdWallet = ?`,
@@ -38,7 +38,7 @@ const history = async (idWallet, operation, value) => {
 };
 
 module.exports = {
-  balance,
+  clientWalletById,
   deposit,
   withdraw,
   history,

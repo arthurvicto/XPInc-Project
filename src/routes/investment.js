@@ -1,15 +1,15 @@
 const express = require('express');
 const investment = require('../controllers/investment');
-const quantityOfAssetsOnBank = require('../middlewares/assetsQuantityValidator');
-const balanceForAssetsValidator = require('../middlewares/balanceForAssetsValidator');
+const bankAssetsValidator = require('../middlewares/bankAssetsValidator');
+const clientWalletValidator = require('../middlewares/clientWalletValidator');
 const quantityOfAssetsOnWallet = require('../middlewares/assetsQuantityOnWallet');
 
 const router = express.Router();
 
 router.post(
   '/comprar',
-  quantityOfAssetsOnBank,
-  balanceForAssetsValidator,
+  bankAssetsValidator,
+  clientWalletValidator,
   investment.buyAssets,
 );
 router.post(

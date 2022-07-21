@@ -1,7 +1,7 @@
 const wallet = require('../models/wallet');
 
 const clientBalance = async (idWallet) => {
-  const balance = await wallet.balance(idWallet);
+  const balance = await wallet.clientWalletById(idWallet);
   return balance;
 };
 const deposit = async (idWallet, value) => {
