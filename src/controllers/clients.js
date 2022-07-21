@@ -1,4 +1,4 @@
-const clientsFromServices = require("../services/clients");
+const clientsFromServices = require('../services/clients');
 
 const allClients = async (req, res) => {
   const clients = await clientsFromServices.allClients();

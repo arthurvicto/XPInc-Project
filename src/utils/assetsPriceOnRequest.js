@@ -1,5 +1,4 @@
-const assetsById = require("../models/assets");
-
+const assetsById = require('../models/assets');
 
 const checkAssetsPrice = async (idAsset, qtde) => {
   const quantityValidator = await assetsById.getAssetById(idAsset);
@@ -8,5 +7,5 @@ const checkAssetsPrice = async (idAsset, qtde) => {
 };
 
 module.exports = {
-    checkAssetsPrice,
+  checkAssetsPrice,
 };
