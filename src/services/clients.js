@@ -1,4 +1,5 @@
 const clientsFromModels = require('../models/clients');
+const newToken = require('../jwt/jwt');
 
 const allClients = async () => {
   const clients = await clientsFromModels.allClients();
@@ -8,11 +9,12 @@ const allClients = async () => {
   return ({ code: 200, message: clients });
 };
 
-/* const login = async (email, password) => {
-  return ({ code: 200, message: client });
+const login = async (email) => {
+  const token = newToken.generateJWTToken(email);
+  return ({ code: 200, message: token });
 };
- */
+
 module.exports = {
   allClients,
-  // login,
+  login,
 };
