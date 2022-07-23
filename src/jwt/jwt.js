@@ -11,7 +11,7 @@ const generateJWTToken = (email) => {
   return token;
 };
 
-const authenticateToken = async (token) => {
+const authenticateToken = (token) => {
   const validate = jwt.verify(token, SECRET);
   return validate;
 };

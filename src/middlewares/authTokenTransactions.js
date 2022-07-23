@@ -4,7 +4,7 @@ const clients = require('../models/clients');
 module.exports = async (req, res, next) => {
   const { idWallet } = req.body;
   const token = req.headers.authorization;
-  const clientToken = await authenticateToken(token);
+  const clientToken = authenticateToken(token);
   const emailByToken = clientToken.email;
   const idClient = await clients.idClientByEmail(emailByToken);
   const clientWallets = await clients.walletsByIdClient(idClient);
