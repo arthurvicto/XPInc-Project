@@ -17,7 +17,7 @@ describe('Retorna o ativo pelo id com a função getAssetById do models', () => 
     });
     after(async () => { assets.getAssetById.restore(); });
 
-    it ('Verifica se o retorno da função é um Array', async () => {
+    it ('Verifica se o retorno da função é um objeto', async () => {
       const response = await assets.getAssetById(1);
       expect(response).to.be.an('object');
     
