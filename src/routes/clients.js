@@ -5,10 +5,13 @@ const tokenAuth = require('../middlewares/tokenAuth');
 
 const router = express.Router();
 
-router.get('/', clients.allClients);
+router.get(
+  '/',
+  tokenAuth,
+  clients.allClients,
+);
 router.post(
   '/login',
-  tokenAuth,
   loginValidator,
   clients.login,
 );
