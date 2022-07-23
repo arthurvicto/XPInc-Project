@@ -6,7 +6,7 @@ const assets = require('../../../services/assets');
 describe('Visualiza se retorna todos os ativos da função allAssets do service', () => {
   describe('quando é realizado com sucesso', () => {
      before(async () => {
-      const execute =[ 
+      const execute = [ 
     {
         "idAsset": 1,
         "name": "AZUL4",
