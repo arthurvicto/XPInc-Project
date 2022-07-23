@@ -6,7 +6,7 @@ const tokenAuth = require('../middlewares/tokenAuth');
 const router = express.Router();
 
 router.post(
-  '/:idClient',
+  '/',
   tokenAuth,
   createWalletValidator,
 

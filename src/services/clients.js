@@ -9,9 +9,13 @@ const allClients = async () => {
   return ({ code: 200, message: clients });
 };
 
-const login = async (email) => {
-  const token = newToken.generateJWTToken(email);
-  return ({ code: 200, message: token });
+const login = async (email, password) => {
+  const clientToken = newToken.generateJWTToken(email);
+  const idClientByLogin = await clientsFromModels.login(email, password);
+  const { idClient } = idClientByLogin;
+  const wallets = await clientsFromModels.walletsByIdClient(idClient);
+  const onlyWallets = wallets.map((wallet) => wallet.idWallet);
+  return ({ token: clientToken, wallets: onlyWallets });
 };
 
 module.exports = {
