@@ -8,7 +8,7 @@
     "test:controllers": "mocha ./src/test/unit/controllers/*.test.js --exit",
     "test:services": "mocha ./src/test/unit/services/*.test.js --exit",
     "test:models": "mocha ./src/test/unit/models/*.test.js --exit",
-    "dev": "nodemon  src/index.js"
+    "dev": "node src/index.js"
   },
   "repository": {
     "type": "git",
