@@ -2,7 +2,7 @@ const allAssets = require('../services/assets');
 
 const allAssetsFromServices = async (req, res) => {
   const assets = await allAssets.allAssets();
-  res.status(assets.code).json(assets.message);
+  res.status(200).json(assets);
 };
 
 const assetsById = async (req, res) => {

@@ -2,7 +2,7 @@ const getAssets = require('../models/assets');
 
 const allAssets = async () => {
   const assets = await getAssets.getAllAssets();
-  return ({ code: 200, message: assets });
+  return assets;
 };
 
 const assetsById = async (id) => {
