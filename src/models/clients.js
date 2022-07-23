@@ -12,10 +12,28 @@ const login = async (email, password) => {
     'SELECT idClient, name, email FROM XPInc.clients WHERE email = ? AND password = ?',
     [email, password],
   );
+  return result[0];
+};
+
+const idClientByEmail = async (email) => {
+  const [result] = await connection.execute(
+    'SELECT idClient, name, email FROM XPInc.clients WHERE email = ?',
+    [email],
+  );
+  return result[0].idClient;
+};
+
+const walletsByIdClient = async (idClient) => {
+  const [result] = await connection.execute(
+    'SELECT * FROM XPInc.wallets WHERE idClient = ?',
+    [idClient],
+  );
   return result;
 };
 
 module.exports = {
   allClients,
   login,
+  walletsByIdClient,
+  idClientByEmail,
 };

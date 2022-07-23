@@ -7,6 +7,7 @@ const idWalletValidator = require('../middlewares/idWalletValidator');
 const idAssetValidator = require('../middlewares/idAssetValidator');
 const qtdeParamsValidator = require('../middlewares/qtdeParamsValidator');
 const tokenAuth = require('../middlewares/tokenAuth');
+const authTokenTransactions = require('../middlewares/authTokenTransactions');
 
 const router = express.Router();
 
@@ -14,6 +15,7 @@ router.post(
   '/comprar',
   tokenAuth,
   idWalletValidator,
+  authTokenTransactions,
   idAssetValidator,
   qtdeParamsValidator,
   bankAssetsValidator,
@@ -24,6 +26,7 @@ router.post(
   '/vender',
   tokenAuth,
   idWalletValidator,
+  authTokenTransactions,
   idAssetValidator,
   qtdeParamsValidator,
   quantityOfAssetsOnWallet,

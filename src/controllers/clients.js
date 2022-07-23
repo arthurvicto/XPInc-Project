@@ -6,9 +6,9 @@ const allClients = async (req, res) => {
 };
 
 const login = async (req, res) => {
-  const { email } = req.body;
-  const client = await clientsFromServices.login(email);
-  res.status(200).json({ token: client.message });
+  const { email, password } = req.body;
+  const data = await clientsFromServices.login(email, password);
+  res.status(200).json(data);
 };
 
 module.exports = {

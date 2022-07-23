@@ -3,8 +3,6 @@ const { expect } = require('chai');
 const { clientBalance } = require('../../../controllers/wallet');
 const clientWallet = require('../../../services/wallet')
 
-const connection = require('../../../models/connections');
-
 describe('Visualiza o saldo do cliente com a chamada clientBalance do controller', () => {
     describe('testando a função clientBalance', () => {
 
