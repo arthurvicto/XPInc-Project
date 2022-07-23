@@ -19,16 +19,16 @@ router.get(
 router.post(
   '/deposito',
   tokenAuth,
-  authTokenTransactions,
   walletValidator,
+  authTokenTransactions,
   valueValidator,
   wallet.deposit,
 );
 router.post(
   '/saque',
   tokenAuth,
-  authTokenTransactions,
   walletValidator,
+  authTokenTransactions,
   balanceForWithdraw,
   valueValidator,
   wallet.withdraw,

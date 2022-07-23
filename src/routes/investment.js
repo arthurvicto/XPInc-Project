@@ -14,8 +14,8 @@ const router = express.Router();
 router.post(
   '/comprar',
   tokenAuth,
-  authTokenTransactions,
   idWalletValidator,
+  authTokenTransactions,
   idAssetValidator,
   qtdeParamsValidator,
   bankAssetsValidator,
@@ -25,8 +25,8 @@ router.post(
 router.post(
   '/vender',
   tokenAuth,
-  authTokenTransactions,
   idWalletValidator,
+  authTokenTransactions,
   idAssetValidator,
   qtdeParamsValidator,
   quantityOfAssetsOnWallet,
