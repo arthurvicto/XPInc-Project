@@ -6,12 +6,33 @@ const walletValidator = require('../middlewares/idWalletValidator');
 const valueValidator = require('../middlewares/valueValidator');
 const balanceForWithdraw = require('../middlewares/balanceForWithdraw');
 const tokenAuth = require('../middlewares/tokenAuth');
+const authTokenTransactions = require('../middlewares/authTokenTransactions');
 
 const router = express.Router();
 
-router.get('/:idWallet', tokenAuth, idWallet, wallet.clientBalance);
-router.post('/deposito', tokenAuth, walletValidator, valueValidator, wallet.deposit);
-router.post('/saque', tokenAuth, walletValidator, balanceForWithdraw, valueValidator, wallet.withdraw);
+router.get(
+  '/:idWallet',
+  tokenAuth,
+  idWallet,
+  wallet.clientBalance,
+);
+router.post(
+  '/deposito',
+  tokenAuth,
+  authTokenTransactions,
+  walletValidator,
+  valueValidator,
+  wallet.deposit,
+);
+router.post(
+  '/saque',
+  tokenAuth,
+  authTokenTransactions,
+  walletValidator,
+  balanceForWithdraw,
+  valueValidator,
+  wallet.withdraw,
+);
 router.get(
   '/ativos/:idWallet',
   tokenAuth,
