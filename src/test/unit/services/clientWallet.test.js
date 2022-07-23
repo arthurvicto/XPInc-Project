@@ -1,20 +1,20 @@
 const sinon = require('sinon');
 const { expect } = require('chai');
 const { walletById } = require('../../../services/wallet');
-const connection = require('../../../models/connections');
+const walletModels = require('../../../models/wallet');
 
-describe('Visualiza o saldo do cliente com a chamada clientWalletById do service', () => {
-  describe('quando é realizado com sucesso', () => {
+describe('Visualiza o saldo do cliente com a chamada walletById do service', () => {
+  describe('testando a função walletById', () => {
      before(async () => {
-      const execute =[[
+      const execute =
         {
           idWallet: 1,
           idClient: 1,
           balance: '0',
-        }]];
-      sinon.stub(connection, 'execute').resolves(execute);
+        };
+      sinon.stub(walletModels, 'clientWalletById').resolves(execute);
     });
-    after(async () => { connection.execute.restore(); });
+    after(async () => { walletModels.clientWalletById.restore(); });
 
     it ('Verifica se o retorno da função é um objeto', async () => {
       const response = await walletById(1);
