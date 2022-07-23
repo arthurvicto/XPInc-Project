@@ -6,7 +6,10 @@ const jwtConfig = {
   expiresIn: '24h',
   algorithm: 'HS256',
 };
-const generateJWTToken = ({ email }) => jwt.sign({ email }, SECRET, jwtConfig);
+const generateJWTToken = (email) => {
+  const token = jwt.sign({ email }, SECRET, jwtConfig);
+  return token;
+};
 
 const authenticateToken = async (token) => {
   const validate = jwt.verify(token, SECRET);
