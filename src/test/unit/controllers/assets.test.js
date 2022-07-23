@@ -38,3 +38,32 @@ describe('Testa se retorna a rota com todos os Assets na corretoa com a função
   });
 });
 });
+
+describe('Retorna o ativo pelo id com a função getAssetById do controllers', () => {
+    describe('testando a função getAssetById', () => {
+
+    const res = {};
+    const req = {};
+
+      const result = 
+    {
+        "idAsset": 1,
+        "name": "AZUL4",
+        "qtde": 9999,
+        "value": "350.00"
+    }
+
+     before(async () => {
+    res.status = sinon.stub().returns(res);
+    res.json = sinon.stub().returns();
+    sinon.stub(assetsFromServices, 'assetsById').resolves(result);
+    });
+    after(async () => { assetsFromServices.assetsById.restore(); });
+
+    it ('Verifica se retorna status 200', async () => {
+      await assets.allAssetsFromServices(req, res);
+      expect(res.status.calledWith(200)).to.be.equal(true);
+
+  });
+});
+});
