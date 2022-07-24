@@ -38,7 +38,6 @@ const router = express.Router();
  *      get:
  *        tags: [cliente]
  *        description: Retorna todos os clientes do Banco XPInc
- *        security:
  *        responses:
  *          200:
  *            content:
