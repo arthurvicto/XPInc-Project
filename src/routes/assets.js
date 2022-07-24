@@ -80,6 +80,7 @@ router.get(
  *                           type: object
  *                           $ref: '#/components/schemas/ativos'
  */
+
 router.get(
   '/:idAsset',
   assetsOnBank,
