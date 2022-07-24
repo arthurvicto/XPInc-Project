@@ -20,7 +20,7 @@ const idClientByEmail = async (email) => {
     'SELECT idClient, name, email FROM heroku_29e026717847b94.clients WHERE email = ?',
     [email],
   );
-  return result[0].idClient;
+  return result[0];
 };
 
 const walletsByIdClient = async (idClient) => {
