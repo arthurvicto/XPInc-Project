@@ -55,6 +55,7 @@ const router = express.Router();
  *                      items:
  *                         $ref: '#/components/schemas/ativos'
  */
+
 router.get(
   '/',
   assetsOnBank,

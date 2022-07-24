@@ -14,6 +14,15 @@ const swaggerConfig = {
       url: `http://localhost:${PORT}`,
       description: 'DB- heroku',
     }],
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT',
+        },
+      },
+    },
   },
   apis: ['./src/index.js', './src/routes/assets.js', './src/routes/clients.js',
     './src/routes/createWallet.js', './src/routes/investment.js', './src/routes/signUp.js',

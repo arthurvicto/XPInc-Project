@@ -34,7 +34,7 @@ const router = express.Router();
  *        example:
  *          name: "arthur"
  *          email: "arthur@hotmail.com"
- *          value: "123456"
+ *          password: "123456"
  */
 
 /**
