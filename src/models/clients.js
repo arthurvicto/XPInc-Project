@@ -2,7 +2,7 @@ const connection = require('./connections');
 
 const allClients = async () => {
   const [result] = await connection.execute(
-    'SELECT idClient, name, email clients',
+    'SELECT idClient, name, email FROM clients',
   );
   return result;
 };
