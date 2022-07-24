@@ -1,13 +1,13 @@
 const connection = require('./connections');
 
 const getAllAssets = async () => {
-  const [result] = await connection.execute('SELECT * FROM heroku_29e026717847b94.assets');
+  const [result] = await connection.execute('SELECT * FROM assets');
   return result;
 };
 
 const getAssetById = async (idAsset) => {
   const [result] = await connection.execute(
-    'SELECT * FROM heroku_29e026717847b94.assets WHERE idAsset = ?',
+    'SELECT * FROM assets WHERE idAsset = ?',
     [idAsset],
   );
   return result[0];
@@ -15,7 +15,7 @@ const getAssetById = async (idAsset) => {
 
 const decreaseAssets = async (idAsset, qtde) => {
   const [result] = await connection.execute(
-    `UPDATE heroku_29e026717847b94.assets
+    `UPDATE assets
     SET qtde = qtde - ?
     WHERE idAsset = ?;`,
     [qtde, idAsset],
@@ -25,7 +25,7 @@ const decreaseAssets = async (idAsset, qtde) => {
 
 const improveAssets = async (idAsset, qtde) => {
   const [result] = await connection.execute(
-    `UPDATE heroku_29e026717847b94.assets
+    `UPDATE assets
     SET qtde = qtde + ?
     WHERE idAsset = ?;`,
     [qtde, idAsset],

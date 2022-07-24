@@ -2,7 +2,7 @@ const connection = require('./connections');
 
 const assetsHistory = async (idWallet, operation, idAsset, qtde, value) => {
   const [result] = await connection.execute(
-    `INSERT INTO heroku_29e026717847b94.assets_history (idWallet, operation, idAsset, qtde, value)
+    `INSERT INTO assets_history (idWallet, operation, idAsset, qtde, value)
     VALUES (?, ?, ?, ?, ?);`,
     [idWallet, operation, idAsset, qtde, value],
   );
@@ -11,7 +11,7 @@ const assetsHistory = async (idWallet, operation, idAsset, qtde, value) => {
 
 const improveAssets = async (idWallet, idAsset, qtde) => {
   const [result] = await connection.execute(
-    `UPDATE heroku_29e026717847b94.client_assets
+    `UPDATE client_assets
         SET qtde = qtde + ?
         WHERE idWallet = ? AND idAsset = ?;`,
     [qtde, idWallet, idAsset],
@@ -21,7 +21,7 @@ const improveAssets = async (idWallet, idAsset, qtde) => {
 
 const decreaseAssets = async (idWallet, idAsset, qtde) => {
   const [result] = await connection.execute(
-    `UPDATE heroku_29e026717847b94.client_assets
+    `UPDATE client_assets
             SET qtde = qtde - ?
             WHERE idWallet = ? AND idAsset = ?;`,
     [qtde, idWallet, idAsset],

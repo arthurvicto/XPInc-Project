@@ -9,7 +9,7 @@ module.exports = async (req, res, next) => {
   const idClient = await clients.idClientByEmail(emailByToken);
   const clientWallets = await clients.walletsByIdClient(idClient.idClient);
   if (!clientWallets) {
-    return res.status(401).json({ message: 'Token expirado!' });
+    return res.status(401).json({ message: 'Token expirado ou inválido!' });
   }
   const onlyWallets = clientWallets.map((wallet) => wallet.idWallet);
   const wallet = onlyWallets.find((element) => element === idWallet);

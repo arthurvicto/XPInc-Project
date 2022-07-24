@@ -30,7 +30,7 @@ WHERE IdWallet = ?`,
 
 const withdraw = async (idWallet, value) => {
   const [result] = await connection.execute(
-    `UPDATE heroku_29e026717847b94.wallets
+    `UPDATE wallets
 SET balance = balance - ?
 WHERE IdWallet = ?`,
     [value, idWallet],
@@ -40,7 +40,7 @@ WHERE IdWallet = ?`,
 
 const history = async (idWallet, operation, value) => {
   const [result] = await connection.execute(
-    'INSERT INTO heroku_29e026717847b94.wallet_history (IdWallet, operation, value) VALUES (?, ?, ?)',
+    'INSERT INTO wallet_history (IdWallet, operation, value) VALUES (?, ?, ?)',
     [idWallet, operation, value],
   );
   return result;
