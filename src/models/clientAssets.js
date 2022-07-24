@@ -3,8 +3,8 @@ const connection = require('./connections');
 const clientAssets = async (idWallet) => {
   const [result] = await connection.execute(
     `SELECT ca.idWallet, ca.idAsset, a.name, ca.qtde, a.value
-  FROM XPInc.client_assets ca
-  JOIN XPInc.assets as a on ca.idAsset = a.idAsset
+  FROM heroku_29e026717847b94.client_assets ca
+  JOIN heroku_29e026717847b94.assets as a on ca.idAsset = a.idAsset
   WHERE idWallet = ?
   AND ca.qtde > 0;`,
     [idWallet],
@@ -14,7 +14,7 @@ const clientAssets = async (idWallet) => {
 
 const clientAssetsById = async (idWallet, idAsset) => {
   const [result] = await connection.execute(
-    `SELECT * FROM XPInc.client_assets
+    `SELECT * FROM heroku_29e026717847b94.client_assets
 WHERE idWallet = ? AND idAsset = ?`,
     [idWallet, idAsset],
   );
@@ -23,7 +23,7 @@ WHERE idWallet = ? AND idAsset = ?`,
 
 const improveAssets = async (idWallet, idAsset, qtde) => {
   const [result] = await connection.execute(
-    `UPDATE XPInc.client_assets
+    `UPDATE heroku_29e026717847b94.client_assets
     SET qtde = qtde + ?
     WHERE idWallet = ? AND idAsset = ?`,
     [qtde, idWallet, idAsset],
@@ -33,7 +33,7 @@ const improveAssets = async (idWallet, idAsset, qtde) => {
 
 const decreaseAssets = async (idWallet, idAsset, qtde) => {
   const [result] = await connection.execute(
-    `UPDATE XPInc.client_assets
+    `UPDATE heroku_29e026717847b94.client_assets
     SET qtde = qtde - ?
     WHERE idWallet = ? AND idAsset = ?`,
     [qtde, idWallet, idAsset],
@@ -43,7 +43,7 @@ const decreaseAssets = async (idWallet, idAsset, qtde) => {
 
 const createAsset = async (idWallet, idAsset, qtde) => {
   const [result] = await connection.execute(
-    `INSERT INTO XPInc.client_assets (idWallet, idAsset, qtde)
+    `INSERT INTO heroku_29e026717847b94.client_assets (idWallet, idAsset, qtde)
     VALUES (?, ?, ?)`,
     [idWallet, idAsset, qtde],
   );
@@ -52,7 +52,7 @@ const createAsset = async (idWallet, idAsset, qtde) => {
 
 const deleteAsset = async (idWallet, idAsset) => {
   const [result] = await connection.execute(
-    `DELETE FROM XPInc.client_assets
+    `DELETE FROM heroku_29e026717847b94.client_assets
     WHERE idWallet = ? AND idAsset = ?`,
     [idWallet, idAsset],
   );

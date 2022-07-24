@@ -2,7 +2,7 @@ const connection = require('./connections');
 
 const clientWalletById = async (idWallet) => {
   const [result] = await connection.execute(
-    `SELECT * FROM XPInc.wallets
+    `SELECT * FROM heroku_29e026717847b94.wallets
 WHERE IdWallet = ?`,
     [idWallet],
   );
@@ -11,7 +11,7 @@ WHERE IdWallet = ?`,
 
 const clientWalletByIdClient = async (idClient) => {
   const [result] = await connection.execute(
-    `SELECT * FROM XPInc.wallets
+    `SELECT * FROM heroku_29e026717847b94.wallets
 WHERE IdClient = ?`,
     [idClient],
   );
@@ -20,7 +20,7 @@ WHERE IdClient = ?`,
 
 const deposit = async (idWallet, value) => {
   const [result] = await connection.execute(
-    `UPDATE XPInc.wallets
+    `UPDATE heroku_29e026717847b94.wallets
 SET balance = balance + ?
 WHERE IdWallet = ?`,
     [value, idWallet],
@@ -30,7 +30,7 @@ WHERE IdWallet = ?`,
 
 const withdraw = async (idWallet, value) => {
   const [result] = await connection.execute(
-    `UPDATE XPInc.wallets
+    `UPDATE heroku_29e026717847b94.wallets
 SET balance = balance - ?
 WHERE IdWallet = ?`,
     [value, idWallet],
@@ -40,7 +40,7 @@ WHERE IdWallet = ?`,
 
 const history = async (idWallet, operation, value) => {
   const [result] = await connection.execute(
-    'INSERT INTO XPInc.wallet_history (IdWallet, operation, value) VALUES (?, ?, ?)',
+    'INSERT INTO heroku_29e026717847b94.wallet_history (IdWallet, operation, value) VALUES (?, ?, ?)',
     [idWallet, operation, value],
   );
   return result;
