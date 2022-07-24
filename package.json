@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "start": " node src/index.js",
+    "start": "node ./src",
     "test:controllers": "mocha ./src/test/unit/controllers/*.test.js --exit",
     "test:services": "mocha ./src/test/unit/services/*.test.js --exit",
     "test:models": "mocha ./src/test/unit/models/*.test.js --exit"
