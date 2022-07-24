@@ -10,7 +10,7 @@ module.exports = async (req, res, next) => {
   if (!emailValidator.validateEmail(email)) {
     return res.status(400).json({ error: 'Formato de email inválido' });
   }
-  if (client.length === 0) {
+  if (client === null || client === undefined) {
     return res.status(400).json({ error: 'Cliente não cadastrado' });
   }
   return next();
