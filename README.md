@@ -8,12 +8,31 @@
   
   Para rodar o projeto localmente, basta rodar os códigos abaixo:
   
-
-    npm install
+ 
+    git clone git@github.com:arthurvicto/XPInc-Project.git  
+    npm install   
     npm start
     
 
 </details>
+
+<details>
+  <summary><strong>Configurando as Variáveis de ambiente</strong></summary><br />
+  
+  Necessário a criação de pasta .env na raiz do projeto e configuração das variáveis abaixo:
+  
+ ```
+MYSQL_HOST=localhost
+MYSQL_USER=user
+MYSQL_PASSWORD=password
+MYSQL_DATABASE=XPInc
+PORT=3306
+JWT_SECRET='senha'
+  
+ ```   
+
+</details>
+
 
 <details>
   <summary><strong>Testes Unitários</strong></summary><br />
