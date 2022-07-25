@@ -5,15 +5,14 @@
 
 <details>
   <summary><strong>Como rodar o projeto</strong></summary><br />
-    ```
-    host: process.env.MYSQL_HOST
-    user: process.env.MYSQL_USER
-    password: process.env.MYSQL_PASSWORD
-  ```
-</details>
+  
+  Para rodar o projeto localmente, basta rodar os códigos abaixo:
+  
 
-<details>
-  <summary><strong>APIs</strong></summary><br />
+    npm install
+    npm start
+    
+
 </details>
 
 <details>
@@ -37,6 +36,7 @@ Para rodar os testes localmente basta rodar os comandos abaixo:
 
 <details>
   <summary><strong>Deploy da API</strong></summary><br />
+  Utilizei o Heroku para hospedar o banco de dados e a aplicação fazendo com que seja realizada de forma interativa e dinâmica. 
   
 [Site](https://xpinc-projec-back-end.herokuapp.com/)
 
@@ -44,7 +44,50 @@ Para rodar os testes localmente basta rodar os comandos abaixo:
 
 <details>
   <summary><strong>Documentação da API- Swagger</strong></summary><br />
+  Com o intuito de listar os parâmetros necessários para a utilização da API, realizei a documentação da api via Swagger.
   
   [Site](https://xpinc-projec-back-end.herokuapp.com/docs/)
   
+</details>
+
+# APIs
+
+<details>
+  <summary><strong>Requisições para investimento</strong></summary><br />
+
+ • POST (/investimentos/comprar)
+```
+  O endpoint recebe como entradas o código do ativo, a quantidade de ações compradas, número da conta compradora
+```
+ • POST (/investimentos/vender)
+  ```
+  O endpoint recebe como entradas o código do ativo, a quantidade de ações compradas, número da conta vendedora
+```
+ • GET BY CLIENT(/ativos/{cod-cliente})
+```
+  O endpoint recebe como entradas o código da wallet do cliente e indorma a quantidade de ativos
+```
+ • GET BY ASSETS (/ativos/{cod-ativo})
+ ```
+  O endpoint recebe como entradas o código dao ativo e informa a quantidade que o banco possui e seu valor
+ ```
+</details>
+
+
+
+<details>
+  <summary><strong>Requisição para depósitos e saques</strong></summary><br />
+
+ • POST (/conta/deposito)
+```
+  O endpoint recebe como entradas o número da conta e a quantidade a depositar
+```
+ • POST (/conta/saque)
+```
+  O endpoint recebe como entradas o número da conta e a quantidade a sacar
+```
+ • GET (/conta/{cod-cliente})
+ ```
+  O endpoint recebe como entradas o código da wallet do cliente e informa o saldo da carteira do cliente
+ ```
 </details>
