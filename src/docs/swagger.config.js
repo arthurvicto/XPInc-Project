@@ -1,7 +1,3 @@
-require('dotenv').config();
-
-const { PORT } = process.env;
-
 const swaggerConfig = {
   definition: {
     openapi: '3.0.1',
@@ -11,7 +7,7 @@ const swaggerConfig = {
       version: '1.0',
     },
     servers: [{
-      url: `http://localhost:${PORT}`,
+      url: 'https://xpinc-projec-back-end.herokuapp.com',
       description: 'DB- heroku',
     }],
     components: {

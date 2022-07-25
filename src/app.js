@@ -19,7 +19,7 @@ const swaggerDoc = swaggerJSDoc(swaggerConfig);
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 
 app.get('/', (req, res) => {
-  res.send('XPinc-API-Project');
+  res.send('XPinc-API-Project - Arthur Victoriano');
 });
 
 app.use('/ativos', assetsRouter);
